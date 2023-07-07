@@ -24,3 +24,32 @@ retorno esperado: o array com o seu código pessoal adicionado ao array.
 
 
 ![code1](/docs/code1.png?raw=true)
+
+
+### Controlador de WP REST API
+
+* Descrição: Adicione um controlador `wp-json/v2/` ao seu plugin inicial
+
+Ele deverá receber um método POST e validar se o argumento possui o seu código pessoal (do passo 01).
+
+Método: POST
+Argumentos da requisicao:
+codigo
+Permissões: Qualquer usuário – logado ou deslogado
+Validação: `$_REQUEST[‘codigo’] == (seu código pessoal)`
+
+Uma vez validado retorne o seguindo objeto json;
+
+```
+retorno: {
+  status: true,
+  data: —> data atual   dia/mes/ano hora:minutos
+  codigo: —> seu código pessoal
+}
+```
+
+Caso o código estiver errado retorno `Erro 403: não autorizado`
+
+* Objetivo: Avaliar seu conhecimento em WP REST Api e construção de controladores de api em WordPress e PHP.
+
+![code4](/docs/code4.png?raw=true)

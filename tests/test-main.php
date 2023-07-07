@@ -27,7 +27,7 @@ class MainTest extends TestCase
     {
         $main = Main::init();
         $this->assertEquals($main->get_plugin_name(), 'splendor-dev-tpab');
-        $this->assertEquals($main->get_version(), '1.0.0');
+        $this->assertEquals($main->get_version(), '1.0.1');
     }
 
     function test_loader_is_defined()
@@ -64,6 +64,18 @@ class MainTest extends TestCase
         $this->loader->expects($this->once())
             ->method('add_filter')
             ->with('splendor_test');
+
+        $main = new Main($this->loader);
+
+        $main->run();
+    }
+
+    function test_adds_action_rest_api_init()
+    {
+
+        $this->loader->expects($this->once())
+            ->method('add_action')
+            ->with('rest_api_init');
 
         $main = new Main($this->loader);
 

@@ -39,7 +39,7 @@ if (! defined('WPINC')) {
 /**
  * Currently plugin version.
  */
-define('SPLENDOR_DEV_TPAB_VERSION', '1.0.0');
+define('SPLENDOR_DEV_TPAB_VERSION', '1.0.1');
 
 /**
  * The personal code for use in plugin.

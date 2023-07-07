@@ -2,6 +2,7 @@
 
 namespace SplendorDevTpab;
 
+use SplendorDevTpab\Controllers\Routes;
 use SplendorDevTpab\Hooks;
 use SplendorDevTpab\Loader;
 
@@ -77,6 +78,7 @@ class Main
 
         $this->loader = $loader;
         $this->define_hooks();
+        $this->define_routes();
     }
 
     /**
@@ -93,6 +95,20 @@ class Main
         $this->loader->add_shortcode('splendor_fullstack', $plugin_hooks, 'splendor_fullstack');
 
         $this->loader->add_filter('splendor_test', $plugin_hooks, 'splendor_test');
+    }
+
+    /**
+     * Register all routes of the plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     */
+    private function define_routes()
+    {
+
+        $routes = new Routes();
+
+        $this->loader->add_action('rest_api_init', $routes, 'register_routes');
     }
 
     /**
